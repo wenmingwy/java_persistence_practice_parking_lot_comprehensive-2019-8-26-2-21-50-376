@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.jdbc.JdbcTestUtils;
 import tws.entity.Employee;
+import tws.entity.ParkingLot;
 
 import javax.sql.DataSource;
 import java.util.List;
@@ -21,6 +22,7 @@ public class EmployeeMapperTest {
 
     @Autowired
     private EmployeeMapper employeeMapper;
+    private ParkingLotMapper parkingLotMapper;
 
     JdbcTemplate jdbcTemplate;
 
@@ -33,14 +35,25 @@ public class EmployeeMapperTest {
     public void tearDown() throws Exception {
         JdbcTestUtils.deleteFromTables(jdbcTemplate, "employee");
     }
-
+//
     @Test
     public void shouldFetchAllEmployees() {
         // given
         jdbcTemplate.execute("INSERT INTO EMPLOYEE VALUES(1,'zhangsan', 21);");
         // when
-        List<Employee> employeeList = employeeMapper.selectAll();
+        List<Employee> employeeList = employeeMapper.selectAllEmployees();
         // then
         assertEquals(1, employeeList.size());
     }
+//    
+    @Test
+    public void shouldFetchAllParkingLot() {
+        // given
+        jdbcTemplate.execute("");
+        // when
+        List<ParkingLot> ParkingLotList = parkingLotMapper.selectAllParkingLots();
+        // then
+        assertEquals(1, ParkingLotList.size());
+    }
+
 }

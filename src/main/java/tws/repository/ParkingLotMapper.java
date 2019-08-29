@@ -2,11 +2,14 @@ package tws.repository;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
+import tws.entity.Employee;
 import tws.entity.ParkingLot;
 
 //作为经理，我想创建并列出所有停车场，以便停车男孩可以将车停在他们身上。
@@ -21,6 +24,9 @@ public interface ParkingLotMapper {
 	@Insert("insert into parkingLot values(#{parkingLot.parkingLotID},#{parkingLot.availablePositionCount},#{parkingLot.capacity},#{parkingLot.parkingBoyId})")
 	void insertParkingLot(@Param("parkingLot") ParkingLot parkingLot);
 	
-	@Select("select parkingLotID from parkingLot where parkingBoyId = #{id}")
-	List<Integer> selectAllParkingLotsOfParkingBoyX(@Param("id") int id);
+	@Update("update parkingLot set parkingLot.name=#{parkingLot.name}, parkingLot.age=#{parkingLot.age} where parkingLot.id = #{id};")
+	   void updateParkingLot(@Param("parkingLot") int id, @Param("parkingLot") ParkingLot parkingLot);
+	
+    @Delete("delete from parkingLot where parkingLot.id = #{id};")
+    void deleteParkingLot(@Param("id") int id);
 }
