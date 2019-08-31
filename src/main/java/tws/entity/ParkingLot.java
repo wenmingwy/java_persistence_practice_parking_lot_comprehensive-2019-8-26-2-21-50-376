@@ -8,41 +8,54 @@ import java.io.Serializable;
 //AC2：我应该能够在系统中列出所有停车场。每个停车场应包含其parkingLotID，availablePositionCount和每个停车场的容量。
 public class ParkingLot implements Serializable{
 
-	 private int parkingLotID;
-	    private String name;
-	    private String age;
+		private int parkingLotID;
+	    private int availablePositionCount;
+	    private int capacity ;
+	    private int parkingBoyId;
 
 	    public ParkingLot()  {
 
 	    }
 
-	    public ParkingLot(int parkingLotID, String name, String age) {
+	    public ParkingLot(int parkingLotID, int availablePositionCount,int capacity,int parkingBoyId) {
 	        this.parkingLotID = parkingLotID;
-	        this.name = name;
-	        this.age = age;
+	        this.parkingBoyId = parkingBoyId;
+	        this.availablePositionCount = availablePositionCount ;
+	        this.capacity = capacity;
 	    }
 
-	    public int getId() {
-	        return parkingLotID;
-	    }
+		public int getParkingLotID() {
+			return parkingLotID;
+		}
 
-	    public void setId(int id) {
-	        this.parkingLotID = id;
-	    }
+		public void setParkingLotID(int parkingLotID) {
+			this.parkingLotID = parkingLotID;
+		}
 
-	    public String getName() {
-	        return name;
-	    }
 
-	    public void setName(String name) {
-	        this.name = name;
-	    }
+		public int getAvailablePositionCount() {
+			return availablePositionCount;
+		}
 
-	    public String getAge() {
-	        return age;
-	    }
+		public void setAvailablePositionCount(int availablePositionCount) {
+			this.availablePositionCount = availablePositionCount;
+		}
 
-	    public void setAge(String age) {
-	        this.age = age;
-	    }
+		public int getCapacity() {
+			return capacity;
+		}
+
+		public void setCapacity(int capacity) {
+			this.capacity = capacity;
+		}
+
+		public int getParkingBoyId() {
+			return parkingBoyId;
+		}
+
+		public void setParkingBoyId(int parkingBoyId) {
+			this.parkingBoyId = parkingBoyId;
+		}
+
+	   
 	}

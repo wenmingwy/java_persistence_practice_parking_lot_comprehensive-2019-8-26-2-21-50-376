@@ -21,12 +21,15 @@ public interface EmployeeMapper {
 	@Select("select * from employee")
     List<Employee> selectAllEmployees();
     
+	@Select("select * from employee OFFSET #{skipItemCount} ROWS FETCH NEXT #{pageSize} ROWS ONLY" )
+    List<Employee> selectAllEmployeesPage(@Param("skipItemCount")int skipItemCount,@Param("pageSize")int pageSize);
+	
 	@Insert("insert into employee values(#{employee.employeeID},#{employee.name},#{employee.age})")
     void insertEmployee(@Param("employee") Employee employee); 
 	
-    @Update("update employee set employee.name=#{employee.name}, employee.age=#{employee.age} where employee.id = #{id};")
-   void updateEmployee(@Param("employee") int id, @Param("employee") Employee employee);
+    @Update("update employee set name=#{employee.name}, age=#{employee.age} where id = #{id}")
+   void updateEmployee(@Param("id") int id, @Param("employee") Employee employee);
 
-    @Delete("delete from employee where employee.id = #{id};")
+    @Delete("delete from employee where employee.id = #{id}")
     void deleteEmployee(@Param("id") int id);
 }
