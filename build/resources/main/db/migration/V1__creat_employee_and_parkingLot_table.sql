@@ -4,7 +4,6 @@ CREATE TABLE employee (
   age   int(4) NOT NULL
 );
 
-
 CREATE TABLE parkingLot(
   id INTEGER PRIMARY KEY,
   availablePositionCount INTEGER NOT NULL,

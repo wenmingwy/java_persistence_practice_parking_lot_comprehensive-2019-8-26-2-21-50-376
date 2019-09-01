@@ -52,8 +52,8 @@ public class EmployeeService {
 ////  分页功能
 //  @GetMapping()
 //  @ResponseStatus(HttpStatus.OK)
-  public List<Employee> displayPageService(int pageSize,int displayPage) {
-  	List<Employee>  result = employeeMapper.selectAllEmployeesPage(pageSize,displayPage);
+  public List<Employee> displayEmployeePageService(int pageSize,int displayPage) {
+  	List<Employee> result = employeeMapper.selectAllEmployeesPage(pageSize,displayPage);
   	return result ;
   }
 }

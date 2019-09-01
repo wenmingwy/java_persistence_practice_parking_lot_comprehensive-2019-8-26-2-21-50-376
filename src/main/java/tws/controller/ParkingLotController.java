@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import tws.entity.Employee;
 import tws.entity.ParkingLot;
 import tws.repository.ParkingLotMapper;
+import tws.service.ParkingLotService;
 
 import java.net.URI;
 import java.util.List;
@@ -18,30 +19,37 @@ import java.util.List;
 public class ParkingLotController {
 
     @Autowired
-    private ParkingLotMapper parkingLotMapper;
+    private ParkingLotService parkingLotService;
 
     @GetMapping("/")
     @ResponseStatus(HttpStatus.OK)
     public List<ParkingLot> getAll() {
-        return parkingLotMapper.selectAllParkingLots();
+        return parkingLotService.getAllParkingLotsService();
     }
 
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
     public void postEmployee(@RequestBody ParkingLot parkingLot) {
-        parkingLotMapper.insertParkingLot(parkingLot);
+    	parkingLotService.postEmployeeService(parkingLot);
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void updateEmployee(@PathVariable int id, @RequestBody ParkingLot parkingLot){
-        parkingLotMapper.updateParkingLot(id,parkingLot);
+    	parkingLotService.updateEmployeeService(id,parkingLot);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void deleteEmployee(@PathVariable int id) {
-        parkingLotMapper.deleteParkingLot(id);
+    	parkingLotService.deleteEmployeeService(id);
     }
+    
+//  分页功能
+  @GetMapping()
+  @ResponseStatus(HttpStatus.OK)
+  public List<ParkingLot> displayPageParkingLotControll(@RequestParam(name = "pageSize")int pageSize,@RequestParam(name = "displayPage")int displayPage) {
+  		return parkingLotService.selectAllParkingLotPage(pageSize,displayPage);
+   }
 
 }

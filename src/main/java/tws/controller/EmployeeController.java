@@ -56,11 +56,11 @@ public class EmployeeController {
     	employeeService.deleteEmployeeService(id);
     }
     
-//    分页功能
+//  分页功能
     @GetMapping()
     @ResponseStatus(HttpStatus.OK)
-    public List<Employee> displayPageControll(@RequestParam(name = "pageSize")int pageSize,@RequestParam(name = "displayPag")int displayPage) {
-    	List<Employee>  result = employeeService.displayPageService(pageSize,displayPage);
+    public List<Employee> displayEmployeePage(@RequestParam(name = "pageSize")int pageSize,@RequestParam(name = "displayPag")int displayPage) {
+    	List<Employee>  result = employeeService.displayEmployeePageService(pageSize,displayPage);
     	return result ;
     }
     

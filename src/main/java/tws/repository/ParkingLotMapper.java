@@ -29,5 +29,9 @@ public interface ParkingLotMapper {
 	
     @Delete("delete from parkingLot where parkingLot.id = #{id};")
     void deleteParkingLot(@Param("id") int id);
+    
+    @Select("select * from parkingLot OFFSET #{skipItemCount} ROWS FETCH NEXT #{pageSize} ROWS ONLY" )
+    List<ParkingLot> selectAllEmployeesPage(@Param("skipItemCount")int skipItemCount,@Param("pageSize")int pageSize);
+	
 }
 
